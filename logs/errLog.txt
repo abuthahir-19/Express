@@ -1,0 +1,1 @@
+20230211	07:39:09	e97969c1-9b29-4c97-ac32-49dde51e6189	Error : Not allowed by CORS

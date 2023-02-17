@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "username": "aa",
+        "password": "$2b$10$NmEOAqJ1DVpsr3NSI4SW..faQD1XOMLNSjjitTYyWVBwgBwQTRyE6"
+    },
+    {
+        "username": "bb",
+        "password": "$2b$10$axtA49JDd7BWYSopnp9smOO3k2vXIuTi516bA.jRu/J1Xij/ebYHi"
+    },
+    {
+        "username": "cc",
+        "password": "$2b$10$YaRKJlKR.ItP7StIwTdpnuZMrc1mgzxPJiMZLYiwlH9dwTptLpwdu"
+    }
+]

@@ -4,3 +4,11 @@
 11-02-2023	12:16:27	8b7cc1b1-3614-4724-8aeb-af07cc3b7070	GET	https://www.bing.com	/
 11-02-2023	12:16:39	33323405-4611-4ee9-9cad-6877eebfa3df	OPTIONS	https://www.bing.com	/
 11-02-2023	12:16:39	09294170-54d9-4a64-94ed-5be370fb10bd	GET	https://www.bing.com	/
+16-02-2023	19:17:15	98d07922-9d5b-4206-b676-041476063bae	POST	undefined	/register
+16-02-2023	19:20:26	b3929a5f-7408-4237-b022-cc8e65f1d640	GET	undefined	/user
+16-02-2023	19:21:03	c3d5a416-88cd-47ad-8b42-888906ba54f2	GET	undefined	/users
+16-02-2023	19:22:08	28cd3c68-7913-4145-bd35-4053df0f2c38	POST	undefined	/register
+16-02-2023	19:22:16	1a48f2a1-eb32-4c2a-a30f-449e8ef62972	GET	undefined	/users
+16-02-2023	19:23:52	9f5dfad1-40fe-4b8c-894a-1e31027fc88d	GET	undefined	/users
+16-02-2023	19:23:57	b1247d1d-68c8-4abd-9a45-2d572f3fecc2	DELETE	undefined	/users
+16-02-2023	19:24:01	caa99a2e-d888-4ad9-a2df-26fe978ed092	DELETE	undefined	/users

@@ -11,7 +11,7 @@ const bcrypt = require ('bcrypt');
 
 const handleNewUser = async (req, res) => {
     const { user, pwd } = req.body;
-    if (!user || !pws) return res.status (400).json ({ 'message' : 'User and password field are required.'});
+    if (!user || !pwd) return res.status (400).json ({ 'message' : 'User and password field are required.'});
     //check for duplicate user names in the database
     const duplicateCheck = usersDB.users.find (person => person.username === user);
     if (duplicateCheck) {

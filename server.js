@@ -24,6 +24,7 @@ app.use ('/subdir', require ('./routes/subdir'));
 app.use ('/employees', require ('./routes/api/employees'));
 app.use ('/register', require ('./routes/register'));
 app.use ('/auth', require ('./routes/auth'));
+app.use ('/users', require ('./routes/users'));
 
 // app.all ('*', (req, res) => {
 //     res.status (404);

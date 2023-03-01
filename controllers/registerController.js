@@ -9,58 +9,71 @@ const fsPromises = require ('fs').promises;
 const path = require ('path');
 const bcrypt = require ('bcrypt');
 const mysql = require ('mysql');
-
+const uuid = require ('uuid');
 
 const db = mysql.createConnection ({
     host: 'localhost',
-    user: 'root',
+    user : 'root',
     password: '123456789',
     database: 'registereduser'
 });
 
-db.connect (e => {
-    if (e) console.log (e.name + " : " + e.message);
-    else console.log ('connection to the database successfull !!');
+db.connect (er => {
+    if (er) {
+        console.log (er.name + " : " + er.message);
+    } else {
+        console.log ('Connection to the database was successful !');
+    }
 });
 
-const checkForExistence = ({ fname, lname, email, pwd, phone }) => {
-    
-};
 
 const createNewUser = async (req, res) => {
     const { fname, lname, email, pwd, phone } = req.body;
-    if (!fname || !lname || !email || !pwd || !phone) res.send (401).json ({'message' : 'All fields are mandatory !!'});
-
-
+    console.log (req.body);
+    const id = uuid.v4();
+    if (!fname || !lname || !email || !pwd || !phone) res.send ({ 'message' : 'All fields are mandatory !!' });
+    //check for duplicate user names in the database
     try {
         //encrypting the password
         const hashedPwd = await bcrypt.hash (pwd, 10);
         //store the new user
-        const newUser = { 'Firstname' : fname, 'Lastname' : lname, 'Email' : email, 'Password' : hashedPwd, 'Phone' : phone };
-        var query = 'INSERT INTO userdata (FirstName, LastName, email, password, phone) VALUE ?'
-        var values = [
-            [fname, lname, email, hashedPwd, phone]
-        ];
+        const newUser = { ID : id, Firstname : fname, Lastname : lname, email : email, password : hashedPwd, phone: phone}
+        usersDB.setUsers ([...usersDB.users, newUser]);
 
-        db.query (query, [values], (err, result) => {
-            if (err) {
-                console.log (err.name + ":" + err.message);
-            } else {
-                console.log ("Data has been inserted to the database successfully !!");
-                console.log ('Number of rows affected : ' + result.AffectedRows);
+
+        //check for whether the user is already exists
+        var sqlQuery = 'SELECT * FROM User WHERE FirstName = ? AND LastName = ? AND email = ? and phone = ?';
+        db.query (sqlQuery, [fname, lname, email, phone], async (err, result) => {
+            if (err) throw err;
+            else {
+                if (result.length > 0) {
+                    res.json ({ "message" : "User with the given credentials already exists !!" });
+                } else {
+                    const query = "INSERT INTO User (ID, FirstName, LastName, email, password, phone) VALUES ?";
+                    var values = [
+                        [id, fname, lname, email, hashedPwd, phone]
+                    ];
+
+                    db.query (query, [values], (er, result) => {
+                        if (er) {
+                            console.log (er.name + ":" + er.message);
+                        } else {
+                            console.log ('Data Insertion was successful !!');
+                            console.log ('No of records inserted : ' + result.affectedRows);
+                        }
+                    });
+
+                    await fsPromises.writeFile (
+                        path.join (__dirname, '..', 'model', 'users.json'),
+                        JSON.stringify (usersDB.users)
+                    );
+                    res.status (201).json ({ 'success' : `New user ${fname + " " + lname} created ! Please login using the given credentials`});
+                }
             }
         });
-
-        usersDB.setUsers ([...usersDB.users, newUser]);
-        await fsPromises.writeFile (
-            path.join (__dirname, '..', 'model', 'users.json'),
-            JSON.stringify (usersDB.users)
-        );
-        console.log (newUser);
-        res.status (201).json ({ 'success' : `New user ${fname + " " + lname} has been created !`});
     } catch (er) {
-        console.log (er.name + ":" + er.message);
-        res.status (500).json ({ 'message' : er.message });
+        throw er;
+        // res.status (500).json ({ 'message' : er.message });
     }
 }
 

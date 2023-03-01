@@ -7,14 +7,12 @@ const usersDB = {
 
 const express = require ('express');
 const router = express();
+const userController = require ('../controllers/usersControllers');
 
 router.get ('/', (req, res) => {
     res.status (200).json (usersDB.users);
 });
 
-router.delete ('/', (req, res) => {
-    usersDB.setUsers ([]);
-    res.status (200).json (usersDB.users).send ("Deleted All the users");
-});
+router.delete ('/', userController.removeUser);
 
 module.exports = router;

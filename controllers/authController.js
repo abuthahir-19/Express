@@ -1,23 +1,39 @@
-const usersDB = {
-    users: require ('../model/users.json')
-};
-
 const bcrypt = require ('bcrypt');
+const mysql = require ('mysql');
+
+const db = mysql.createConnection ({
+    host: 'localhost',
+    user: 'root',
+    password: '123456789',
+    database: 'registereduser',
+});
+
+db.connect (er => {
+    if (er) throw er;
+    else {
+        console.log ('Connection to the DB was success !!');
+    }
+});
+
 
 const checkForValidUser = async (req, res) => {
     const { user, pwd } = req.body;
-    const hashedPwd = bcrypt.hash (pwd, 10);
-    const foundUser = usersDB.users.find (person => person.username === user);
-    if (!foundUser) {
-        res.send ("User does not exists");
-        return;
-    }
-    const matchPwd = await bcrypt.compare (pwd, foundUser.password);
-    if (matchPwd) {
-        res.send ("User logged in !!");
-    } else {
-        res.json ("Password does not match.");
-    }
+    var sqlQuery = 'SELECT password from User WHERE email = ?';
+    db.query (sqlQuery, [user], async (er, result) => {
+        if (er) throw er;
+        else {
+            if (result.length > 0) {
+                const match = await bcrypt.compare (pwd, result[0].password);
+                if (match) {
+                    res.json ({ "success" : "You\'re logged in . " });
+                } else {
+                    res.json ({ "message" : "Something gone wrong. Please check with your credentials !!" });
+                }
+            } else {
+                res.json ({ "message" : "Invalid user. Please register !!" });
+            }
+        }
+    });
 };
 
 module.exports = { checkForValidUser };

@@ -13,6 +13,7 @@ router.get ('/', (req, res) => {
     res.status (200).json (usersDB.users);
 });
 
-router.delete ('/', userController.removeUser);
+// router.delete ('/', userController.removeUser);
+router.delete ('/', require ('../controllers/usersControllers').deleteAllUsers);
 
 module.exports = router;

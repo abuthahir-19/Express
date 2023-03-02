@@ -27,7 +27,7 @@ const checkForValidUser = async (req, res) => {
                 if (match) {
                     res.json ({ "success" : "You\'re logged in . " });
                 } else {
-                    res.json ({ "message" : "Something gone wrong. Please check with your credentials !!" });
+                    res.json ({ "message" : "Incorrect password. Please check with your credentials !!" });
                 }
             } else {
                 res.json ({ "message" : "Invalid user. Please register !!" });

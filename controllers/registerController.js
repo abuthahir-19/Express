@@ -37,7 +37,7 @@ const createNewUser = async (req, res) => {
         //encrypting the password
         const hashedPwd = await bcrypt.hash (pwd, 10);
         //store the new user
-        const newUser = { ID : id, Firstname : fname, Lastname : lname, email : email, password : hashedPwd, phone: phone}
+        const newUser = { ID : id, Firstname : fname, Lastname : lname, email : email, password : hashedPwd, phone: phone }
         usersDB.setUsers ([...usersDB.users, newUser]);
 
 
@@ -72,8 +72,8 @@ const createNewUser = async (req, res) => {
             }
         });
     } catch (er) {
+        res.status (500).json ({ 'message' : er.message });
         throw er;
-        // res.status (500).json ({ 'message' : er.message });
     }
 }
 

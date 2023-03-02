@@ -167,3 +167,16 @@
 01-03-2023	16:38:56	de8d9cba-cbcb-4a79-af5f-9d0d8cbaed64	GET	undefined	/auth
 01-03-2023	16:39:04	ec2e4a48-3048-4611-9293-23da56fdedc4	POST	http://localhost:3500	/auth
 01-03-2023	16:39:07	28b2cf0a-2005-495e-91cc-291fd7f9fcef	GET	undefined	/auth
+01-03-2023	16:40:52	a0279a4d-529e-4a7c-b6be-cfcf874b4a0e	GET	undefined	/register
+01-03-2023	16:52:40	e8f5aac7-ccab-4ef7-9eab-541463187c30	DELETE	undefined	/users
+01-03-2023	16:53:19	ab36b8dd-e11c-4302-b097-389e44a408f7	DELETE	undefined	/users
+01-03-2023	16:59:27	007d5a2d-3270-4d3d-8f8b-c927b3141044	POST	undefined	/register
+01-03-2023	16:59:43	a9650822-a5b3-428e-be1e-ca8b8a543f7c	POST	undefined	/register
+01-03-2023	16:59:54	cbedd05f-3521-4491-b253-908987191399	POST	undefined	/auth
+01-03-2023	17:00:01	bad0daf6-c59e-4a6e-b365-a6f24dd538bf	POST	undefined	/auth
+02-03-2023	08:23:43	9a8f296b-4cf1-40e0-8fce-b7d6792b921a	POST	undefined	/auth
+02-03-2023	08:27:57	71bd184b-7b2f-4eec-a23b-5bfb32da50df	POST	undefined	/auth
+02-03-2023	08:28:02	3434c62f-3837-4e11-a67f-f6c819254765	POST	undefined	/auth
+02-03-2023	08:31:46	77e1ed04-b614-4646-b4f5-1bd5cb11eda1	POST	undefined	/register
+02-03-2023	08:32:20	16595715-a192-4cac-a85c-72eea6e05c30	POST	undefined	/auth
+02-03-2023	08:32:23	d6d1188c-8a0b-47e9-9224-2a59beb82e47	POST	undefined	/auth

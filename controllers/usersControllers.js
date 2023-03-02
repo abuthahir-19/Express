@@ -27,4 +27,17 @@ const removeUser = (req, res) => {
     });
 };
 
-module.exports = { removeUser };
+const deleteAllUsers = (req, res) => {
+    var sqlQuery = 'DELETE FROM User';
+    db.query (sqlQuery, (err, result) => {
+        if (err) {
+            console.log (err.name + ":" + err.message);
+            throw err;
+        } else {
+            console.log ('All records deleted from the database succesfully !!');
+            res.json ({ "success" : "All users are deleted !!" });
+        }
+    });
+}
+
+module.exports = { removeUser, deleteAllUsers };

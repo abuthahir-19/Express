@@ -14,6 +14,24 @@ db.connect (er => {
     }
 });
 
+const getAllUsers = (req, res) => {
+    var sqlQuery = 'SELECT * FROM User';
+    db.query (sqlQuery, (er, result) => {
+        if (er) throw er;
+        else {
+            if (result.length > 0) {
+                console.log ('List of all users in our database : ');
+                for (var obj of result) {
+                    for (var prop in obj) {
+                        console.log (prop + " : " + obj[prop]);
+                    }
+                    console.log ('\n');
+                }
+                res.json (result);
+            }
+        }
+    });
+};
 
 const removeUser = (req, res) => {
     const { fname, lname, email, pwd, phone } = req.body;
@@ -40,4 +58,4 @@ const deleteAllUsers = (req, res) => {
     });
 }
 
-module.exports = { removeUser, deleteAllUsers };
+module.exports = { removeUser, deleteAllUsers, getAllUsers };

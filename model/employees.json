@@ -1,12 +1,9 @@
 [
     {
-        "id" : 1,
-        "firstname" : "John",
-        "lastname" : "Doe"
-    },
-    {
-        "id" : 2,
-        "firstname" : "Micheal",
-        "lastname" : "Andreson"
+        "empId": "de136195-6c6f-4702-95a0-cfb8a17227ec",
+        "empName": "SYED ABUTHAHIR A",
+        "empRole": "Software Engineer",
+        "empPhone": "7904012835",
+        "empEmail": "abuthahirstar1@gmail.com"
     }
 ]

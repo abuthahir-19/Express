@@ -50,7 +50,6 @@ const createNewEmployee = (req, res) => {
         empPhone : phone,
         empEmail : email
     };
-    data.setEmployees ([...data.employees, newEmployee]);
     
     if (!name || !role || !phone || !email) res.json ({ "message" : "Please enter data in all required fields !!" });
     else {
@@ -66,13 +65,18 @@ const createNewEmployee = (req, res) => {
                         [id, name, role, phone, email]
                     ]
                     db.query (insertQuery, [values], (err, result) => {
-                        if (err) throw err;
+                        if (err) {
+                            console.log (err.name + " : " + err.message);
+                            throw err;
+                        }
                         else {
                             console.log ('Created a new employee !!');
                             res.json ({ "message" : `Created a new employee named ${name} successfully !!` });
                         }
                     });
 
+                    data.setEmployees ([...data.employees, newEmployee]);
+                    
                     await fsPromises.writeFile (
                         path.join (__dirname, '..', 'model', 'employees.json'),
                         JSON.stringify (data.employees)
@@ -106,7 +110,20 @@ const deleteEmployee = (req, res) => {
 };
 
 const getEmployee = (req, res) => {
-    res.json (data.employees.filter (employee => employee.id === req.body.id));
+    const id = (req.params.id);
+    var getQuery = 'SELECT * FROM Employee WHERE empId = ?';
+    db.query (getQuery, [id], (er, result) => {
+        if (er) {
+            console.log (er.name + ":" + er.message);
+            throw er;
+        } else {
+            if (result.length > 0) {
+                res.json (result);
+            } else {
+                res.json ({ "message" : `No employee exists with the id ${id}` });
+            }
+        }
+    });
 };
 
 module.exports = { getAllEmployees, createNewEmployee, updateEmployee, deleteEmployee, getEmployee };

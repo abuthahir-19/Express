@@ -5,5 +5,12 @@
         "empRole": "Software Engineer",
         "empPhone": "7904012835",
         "empEmail": "abuthahirstar1@gmail.com"
+    },
+    {
+        "empId": "3f70a3c9-c066-4b1b-922f-af0766bd7cff",
+        "empName": "JOHN RICHARD D",
+        "empRole": "Principal Software Engineer",
+        "empPhone": "9944256661",
+        "empEmail": "johnrichard@gmail.com"
     }
 ]

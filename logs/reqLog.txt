@@ -224,3 +224,14 @@
 04-03-2023	09:28:31	70c33e80-f987-45c0-93fb-f9909498bfc2	GET	undefined	/employees
 04-03-2023	09:29:56	ba4d2800-2ac6-4a6c-bdbd-876cc572f03e	GET	undefined	/employees
 04-03-2023	09:30:10	edcd755a-ba59-4992-83e9-778f4ec7a379	POST	undefined	/employees
+20-03-2023	13:59:25	3c15baea-f9c7-4c1e-add5-1de0cdb95cc2	GET	undefined	/
+20-03-2023	13:59:25	9c4ef6fe-7d66-4143-9679-fb2417733a45	GET	undefined	/css/style.css
+20-03-2023	13:59:25	f98ec514-5c7c-4c92-95fa-dee36106d730	GET	undefined	/favicon.ico
+20-03-2023	13:59:28	780ae503-0840-4254-b7a5-bb7b222e30b4	GET	undefined	/auth
+20-03-2023	13:59:35	cf8659ad-a180-4a39-9ae6-38154a8834ad	POST	http://localhost:3500	/auth
+20-03-2023	14:00:29	124ac9ac-1302-4451-8922-7ed022d389cf	GET	undefined	/register
+12-04-2023	13:37:09	c7fb88af-1a3c-4848-b0e4-697cc13c41c2	GET	undefined	/
+12-04-2023	13:37:09	042df183-2c0a-47ad-b770-5565805e2703	GET	undefined	/css/style.css
+12-04-2023	13:37:09	5915dac5-eb02-479b-8848-222f307e853d	GET	undefined	/favicon.ico
+12-04-2023	13:37:10	e3342b7e-5cf2-4b82-b614-a729aac1f558	GET	undefined	/register
+12-04-2023	13:45:46	28bf4370-d0a6-47cf-853d-869dfbf3fb4a	GET	undefined	/employees
